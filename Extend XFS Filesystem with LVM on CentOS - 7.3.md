@@ -1,5 +1,3 @@
-# Quick_Commands_Linux
-Quick commands for Linux systems - CentOs-7.3
 
 
 1. Extend XFS filesystem on top of LVM
@@ -8,19 +6,21 @@ Quick commands for Linux systems - CentOs-7.3
   lists information about all available or the specified block devices.  The lsblk command reads the sysfs filesystem to         gather information.
 
 
-  [root@vbmmapr1 ~]# lsblk
-  NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-  sda           8:0    0  172G  0 disk 
-  |-sda1        8:1    0    1G  0 part /boot
-  |-sda2        8:2    0   31G  0 part 
-  | |-cl-root 253:0    0 27.8G  0 lvm  /
-  | `-cl-swap 253:1    0  3.2G  0 lvm  [SWAP]
-  `-sda3        8:3    0  140G  0 part 
-  sdb           8:16   0  100G  0 disk 
-  sr0          11:0    1  4.1G  0 rom  
+     [root@vbmmapr1 ~]# lsblk
+    NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda           8:0    0  172G  0 disk 
+    |-sda1        8:1    0    1G  0 part /boot
+    |-sda2        8:2    0   31G  0 part 
+    | |-cl-root 253:0    0 27.8G  0 lvm  /
+    | `-cl-swap 253:1    0  3.2G  0 lvm  [SWAP]
+    `-sda3        8:3    0  140G  0 part 
+    sdb           8:16   0  100G  0 disk 
+    sr0          11:0    1  4.1G  0 rom  
    
-  1.2 'fdisk <device Name>' 
-   fdisk /dev/sda
+  1.2 'fdisk' 
+    fdisk (in the first form of invocation) is a menu-driven program for creation and manipulation of partition tables.
+   
+    fdisk /dev/sda
     Welcome to fdisk (util-linux 2.23.2).
 
     Changes will remain in memory only, until you decide to write them.
@@ -67,27 +67,24 @@ Quick commands for Linux systems - CentOs-7.3
     The kernel still uses the old table. The new table will be used at
     the next reboot or after you run partprobe(8) or kpartx(8)
     Syncing disks.
-
-  [root@vbmmapr3 ~]# 'partprobe':
-    partprobe is a program that informs the operating system kernel of partition table changes, by requesting that the     operating system re-read the partition table.
+    
+   Run partprobe or reboot the system as instructed.
 
    
-   
-  
   1.3 'pvdisplay':
   pvdisplay shows the attributes of PVs, like size, physical extent size, space used for the VG descriptor area, etc.
   
-  [root@vbmmapr3 ~]# pvdisplay
-  --- Physical volume ---
-  PV Name               /dev/sda2
-  VG Name               cl
-  PV Size               31.00 GiB / not usable 3.00 MiB
-  Allocatable           yes 
-  PE Size               4.00 MiB
-  Total PE              7935
-  Free PE               1
-  Allocated PE          7934
-  PV UUID               0Ijuj2-Hfph-sxZl-fA1w-N5Fj-2Q9Q-NP0z42
+    [root@vbmmapr3 ~]# pvdisplay
+      --- Physical volume ---
+    PV Name               /dev/sda2
+    VG Name               cl
+    PV Size               31.00 GiB / not usable 3.00 MiB
+    Allocatable           yes 
+    PE Size               4.00 MiB
+    Total PE              7935
+    Free PE               1
+    Allocated PE          7934
+    PV UUID               0Ijuj2-Hfph-sxZl-fA1w-N5Fj-2Q9Q-NP0z42
    
    1.4 'pvcreate' :
    pvcreate  initializes  a PV so that it is recognized as belonging to LVM, and allows the PV to be used in a VG. A PV can be    a disk partition, whole disk, meta device, or loopback file.
